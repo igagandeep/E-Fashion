@@ -1,3 +1,8 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
+body{
+  font-family: 'EB Garamond', serif;
+}
+.app {
+  border:1px solid black;
+  padding:0px;
 }
