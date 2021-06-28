@@ -1,6 +1,6 @@
 header{
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-columns: 1fr 5fr 1fr;
     background-color:#000 ;
     grid-template-areas: 
     "logo nav-left nav-right";
@@ -10,6 +10,9 @@ header{
     margin:0px 20px;
     color:#fff;
     grid-area:logo;
+    align-items: center;
+
+    
 }
 .nav-left{
     display: flex;
