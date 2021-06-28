@@ -8,7 +8,7 @@ function Header() {
     return (
         <header>
             <div id="logo" >
-                <h1>eFASHION</h1>
+            <h1>EFashion</h1> 
             </div>
             <nav className="nav-left"> 
                 <NavLink className="nav-left-items" to="/guys">GUYS</NavLink>
