@@ -1,10 +1,10 @@
 header{
     display: grid;
-    grid-template-columns: 1fr 5fr 1fr;
+    grid-template-columns: 1fr 2fr 2fr;
     background-color:#000 ;
     grid-template-areas: 
     "logo nav-left nav-right";
-    box-shadow: 0px 2px 2px 1px rgba(0,0,0,0.19);      
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);   
 }
 #logo{    
     margin:0px 20px;
@@ -14,21 +14,28 @@ header{
 
     
 }
+
 .nav-left{
-    display: flex;
     grid-area:nav-left;
-    align-items: center;    
+    align-items: center;
+    display: flex;
 }
-.nav-left-items{
+
+.nav-left > input{
+    padding:5px;
+    align-items: center;
+    width:100%;
     margin: 0px 20px;
-    text-decoration: none;
-    color: #fff;
 }
+
+
+
 .nav-right{
     display: flex;
     align-items: center;
     grid-area:nav-right;
     justify-content: flex-end;
+    /* border:1px solid white; */
 }
 .nav-right-items{
     margin: 0px 20px;
@@ -39,25 +46,19 @@ header{
  header{
     text-align: center;
     grid-template-areas: 
-    "logo logo logo"
-    "nav-left nav-left nav-right";
+    "logo logo nav-right"
+    "nav-left nav-left nav-left";
+ }
+ #logo{
+     display: flex;
+     justify-content: flex-start; 
+     margin:0px 20px;
  }
  .nav-left{
      margin-bottom: 20px;
  }
  .nav-right{
-     margin-bottom: 20px;
+     margin:30px 0px  20px 0px;
  }   
 }
 
-@media screen and (max-width:321px){
-    header{
-       text-align: center;
-       grid-template-areas: 
-       "logo logo logo"
-       "nav-left nav-left nav-right";
-    }
-    .nav-left-items{
-        margin: 0px 10px;
-    }   
-}
