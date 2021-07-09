@@ -1,0 +1,9 @@
+.navbar{
+    display: flex;
+    align-items: center;
+    color:#fff;
+    background-color: #e67e22;
+}
+.hamburger{
+    color:#fff;
+}

@@ -1,12 +1,9 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import './Sidebar.css';
-import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
-import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft';
 import Slider from '@material-ui/core/Slider';
+
 import { makeStyles } from "@material-ui/core/styles";
-
-
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -35,9 +32,9 @@ const useStyles = makeStyles((theme) => ({
   }));
   
 
-function Sidebar() {
+function Sidebar({sidebar}) {
     const classes = useStyles();
-    const[sidebar, setSidebar] = useState(false);
+    // const[sidebar, setSidebar] = useState(false);
     const [price, setPrice] = useState([20,37]);
 
     
@@ -45,12 +42,17 @@ function Sidebar() {
         setPrice(newValue);
     }
 
-  const showSideBar = () => {
-    setSidebar(!sidebar);
-  }
+  // const showSideBar = () => {
+  //   setSidebar(!sidebar);
+  // }
 
     return (
         <div id="sidebar-container">
+            {/* <div className="hamburger" >
+              <Link to="#"> 
+                <MenuIcon  fontSize="large" onClick={showSideBar}/>   
+              </Link> 
+            </div> */}
             <div className={sidebar ? 'sidebar active' : 'sidebar'}>
 
                 <div className="categories">
@@ -96,11 +98,6 @@ function Sidebar() {
                 </div>
 
             </div>
-            <Link to="#"> 
-               {sidebar 
-                    ? <KeyboardArrowLeftIcon fontSize="large" className="hamburger" onClick={showSideBar}  />  
-                    : <KeyboardArrowRightIcon  fontSize="large" className="hamburger" onClick={showSideBar} />}
-            </Link> 
            
         </div>
     )

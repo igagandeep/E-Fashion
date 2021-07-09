@@ -1,19 +1,20 @@
 #sidebar-container{
-    display: flex;   
+    display: flex; 
+    flex-direction: column;  
 }
 
 .hamburger{
-    margin-top:300px;
-    color:#000
+    color:#000;
+    display:flex;
 }
 .sidebar{
     width:210px;
     padding:20px;
-    z-index: 99999999999999;
-    background-color: #f6f6f6;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    /* z-index: 99999999999999; */
+    background-color: #fff;
+    /* box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2); */
     margin-left:-260px;
-    height:700px;
+    /* height:600px; */
     transition-duration: 1s;
 }
 

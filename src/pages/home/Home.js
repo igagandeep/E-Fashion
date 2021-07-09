@@ -4,10 +4,10 @@ import Sidebar from '../../components/sidebar/Sidebar';
 import Products from '../../components/products/Products';
 
 function Home({sidebar}) {
-    console.log(sidebar);
+
     return (
         <div className='home-container'>
-            <Sidebar/>
+            <Sidebar sidebar={sidebar}/>
             <Products />
         </div>
     )

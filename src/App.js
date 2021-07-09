@@ -1,34 +1,32 @@
 import React, {useState} from 'react';
 import './App.css';
-import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import Header from './components/header/Header';
 import Home from './pages/home/Home';
-
-// import MenuIcon from '@material-ui/icons/Menu';
-import purple from '@material-ui/core/colors/purple';
+import Navbar from './components/navbar__bottom/Navbar';
+import Product from './pages/product/Product';
 
 
 
 function App() {
+  const [sidebar, setSidebar] = useState(false);
 
-  // const[sidebar, setSidebar] = useState(false);
-  
-  // const showSideBar = () => {
-  //   setSidebar(!sidebar);
-  // }
+  const showSidebar = () => {
+    setSidebar(!sidebar);
+  }
+
 
   return (
    
     <Router>
       <div className="app">    
-            <Header />
-            {/* <Link to="#">
-            <MenuIcon  fontSize="large"  onClick={showSideBar}/>
-            </Link>  */}
+            <Header/>
+             <Navbar  showSidebar={showSidebar}/> 
             <Switch>
-              <Route path="/">
-                <Home  />
+              <Route path="/" exact>
+                <Home  sidebar={sidebar}/>
               </Route> 
+              <Route path="/product/:id" component={Product} />
             </Switch>
       </div>  
      </Router>
