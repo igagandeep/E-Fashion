@@ -1,3 +1,17 @@
 h1{
     text-align: center;
 }
+.products-container{
+    background-color: #f6f6f6;
+    
+
+}
+.products{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.product{
+    text-decoration: none;
+    color:darkslategray
+}

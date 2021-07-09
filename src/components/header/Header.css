@@ -1,38 +1,44 @@
 header{
     display: grid;
-    grid-template-columns: 1fr 2fr 2fr;
+    grid-template-columns: 20% 50% 30%;
     background-color:#000 ;
+    /* border:1px solid white; */
     grid-template-areas: 
     "logo nav-left nav-right";
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);   
 }
-#logo{    
-    margin:0px 20px;
+#logo{
+    /* border:1px solid white; */
+    margin:0px;
     color:#fff;
     grid-area:logo;
-    align-items: center;
-
-    
+    display: flex;
 }
-
+.brand{
+    color:#fff;
+    text-decoration: none;
+}
 .nav-left{
     grid-area:nav-left;
     align-items: center;
     display: flex;
 }
 
-.nav-left > input{
+ .nav-left > input{
     padding:5px;
     align-items: center;
     width:100%;
     margin: 0px 20px;
 }
-
-
-
+.nav-left > input:focus{
+    outline: none !important;
+    border:1px solid #fff;
+}
 .nav-right{
     display: flex;
     align-items: center;
+    
+    /* border:1px solid white; */
     grid-area:nav-right;
     justify-content: flex-end;
     /* border:1px solid white; */
@@ -41,6 +47,7 @@ header{
     margin: 0px 20px;
     color:#fff
 }
+
 
 @media screen and (max-width:560px){
  header{

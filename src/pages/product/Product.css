@@ -1,0 +1,38 @@
+.product-container{
+
+    background-color: #f6f6f6;
+}
+.breadcrumbs{
+    padding:30px;
+}
+.product{
+    display:flex;
+    padding:30px;
+    background-color: #fff;
+}
+.product-image{
+  
+  
+
+}
+.product-description{
+    
+    padding:30px;
+   
+}
+
+.quantity{
+   margin-right: 20px;
+   margin-bottom: 10px;
+}
+
+@media only screen and (max-width:760px){
+   
+    .product{
+        /* grid-template-areas: 
+        "image",
+        "info"; */
+        flex-direction: column;
+    }
+    
+}

@@ -7,61 +7,88 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import {Link} from 'react-router-dom';
+import axios from 'axios';
+import './Products.css';
 
 const useStyles = makeStyles({
     root: {
-      width: 345,
+      width: 300,
+      padding: '10px 20px 10px 20px',
+      margin : "20px 0px"
     },
     media: {
-      height: 300,
+        padding:'0px',
+        height: 250,
     },
+    content:{
+        textAlign:'center'
+    },
+    actions : {
+        display:'flex',
+        flexDirection:'column',
+      
+    },
+    price : {
+        fontWeight: 'bold'
+    },
+    shoppingCart : {
+        backgroundColor: '#000',
+        color:'#fff',
+        width:'100%',
+        padding:'5px',
+        marginTop:'10px',
+        '&:hover': {
+            backgroundColor: "#e67e22",
+         },
+    }
   });
+
+
+
 
 function Products() {
     const [products, setProducts] = useState([]);
     const classes = useStyles();
 
-    
     useEffect(() => {
-
-        fetch('https://fakestoreapi.com/products')
-            .then(res=>res.json())
-            .then(data=> setProducts[data]);
-    })
+        axios.get('https://fakestoreapi.com/products')
+        .then(res => setProducts(res.data));
+    }, []);
     
     return (
-        <div>
-        {products}
+        <div className="products-container">
+            
             <h1>New Arrivals</h1>
-            {products.map((product) => (
-                <Card className={classes.root}>
-                <CardActionArea>
-                    <CardMedia
-                    className={classes.media}
-                    image={product.image}
-                    title="Contemplative Reptile"
-                    />
-                    <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
-                        Lizard
-                    </Typography>
-                    {/* <Typography variant="body2" color="textSecondary" component="p">
-                        Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                        across all continents except Antarctica
-                    </Typography> */}
-                    </CardContent>
-                </CardActionArea>
-                <CardActions>
-                    <Button size="small">
-                        Share
-                    </Button>
-                    <Button size="small">
-                        Learn More
+            <div className="products">
+            {products.map((product, key) => (
+                <Card className={classes.root} key={product.id}>
+               <Link   className="product" to={'/product/' + product.id}>
+                    <CardActionArea>
+                        <CardMedia
+                        className={classes.media}
+                        image={product.image}
+                        title={product.title}
+                        />
+                        <CardContent className={classes.content}>
+                        <Typography gutterBottom  >
+                            {product.title}
+                        </Typography>
+                        </CardContent>
+
+                    </CardActionArea>
+                </Link>
+                <CardActions className={classes.actions}>
+                   <Typography className={classes.price}>
+                       Price -${product.price}
+                    </Typography>    
+                    <Button size="small"  className={classes.shoppingCart}>
+                        Add to Basekt
                     </Button>
                 </CardActions>
             </Card>
             ))}
-            
+            </div>
         </div>
     )
 }
