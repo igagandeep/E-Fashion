@@ -10,16 +10,25 @@ import Typography from '@material-ui/core/Typography';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 import './Products.css';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
-const useStyles = makeStyles({
+
+const useStyles = makeStyles((theme) => ({
     root: {
       width: 300,
       padding: '10px 20px 10px 20px',
       margin : "20px 0px"
     },
+    
     media: {
         padding:'0px',
         height: 250,
+    },
+    loading :{
+        width: '100%',
+        ' & > * + *': {
+      marginTop: '100px',
+    }
     },
     content:{
         textAlign:'center'
@@ -32,6 +41,7 @@ const useStyles = makeStyles({
     price : {
         fontWeight: 'bold'
     },
+
     shoppingCart : {
         backgroundColor: '#000',
         color:'#fff',
@@ -42,23 +52,35 @@ const useStyles = makeStyles({
             backgroundColor: "#e67e22",
          },
     }
-  });
+  }));
 
 
 
 
 function Products() {
     const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
     const classes = useStyles();
 
     useEffect(() => {
         axios.get('https://fakestoreapi.com/products')
-        .then(res => setProducts(res.data));
+        .then(res => {
+            setProducts(res.data)
+            setLoading(false);
+          } );
     }, []);
     
     return (
         <div className="products-container">
+             
+             {loading ? 
+                <div style={{ alignItems: "center", display: "flex", justifyContent: "center", height: "80vh", width: "100vw" }}>
+                <CircularProgress />
+                   <span style={{ justifyContent: "center", position: "fixed", top: "45%" }}>Loading...please wait</span>
+                </div>
+
             
+            : <div>
             <h1>New Arrivals</h1>
             <div className="products">
             {products.map((product, key) => (
@@ -89,6 +111,8 @@ function Products() {
             </Card>
             ))}
             </div>
+            </div>
+             }
         </div>
     )
 }

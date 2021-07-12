@@ -1,10 +1,24 @@
-h1{
-    text-align: center;
-}
+
 .products-container{
     background-color: #f6f6f6;
-    
-
+}
+.products-container h1{
+    text-align: center;
+}
+.loading{
+    /* width:900px; */
+   display: flex;
+ 
+   background-color: red ;
+   /* position: absolute; */
+   /* margin:0 auto; */
+   justify-content: center;
+   align-items: center;
+   border:1px solid black;
+    /* margin:0 auto; */
+}
+.loading img{
+    border:1px solid black;
 }
 .products{
     display: flex;

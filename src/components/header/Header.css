@@ -17,6 +17,7 @@ header{
 .brand{
     color:#fff;
     text-decoration: none;
+    margin-left: 10px;
 }
 .nav-left{
     grid-area:nav-left;
@@ -45,8 +46,9 @@ header{
 }
 .nav-right-items{
     margin: 0px 20px;
-    color:#fff
+    color:#fff;
 }
+
 
 
 @media screen and (max-width:560px){

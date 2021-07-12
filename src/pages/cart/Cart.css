@@ -1,0 +1,139 @@
+.cart-container{
+    /* margin: 0 20px; */
+    display:grid;
+    grid-template-columns: 80% 20%;
+    grid-template-areas: 
+    "cart checkout";
+    margin:0px 20px;
+    /* width:1200px;     */
+}
+.carts{
+    grid-area: cart;
+    margin: 0px 20px;
+}
+.cart{
+    display:grid;
+    grid-template-columns: 30% 50% 20%;
+    grid-template-areas: 
+    "image info basket";
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+    margin:30px 0px;
+    flex-wrap: wrap;
+    padding:30px;
+    background-color: #fff;
+}
+.product--image{
+    grid-area:image;
+}
+
+.product--image img{
+    width:100%;
+    height:250px
+} 
+.product--info{
+    grid-area: info;
+    padding:10px;
+}
+
+.basket{
+    grid-area: basket;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+}
+.basket .product--quantity{
+ text-align: center;
+
+}
+.basket .add-to-basket{
+    width:100%;
+    margin: 5px 0px;
+    padding:5px;
+    background-color: #e67e22;
+    color:#fff;
+    border-color: #e67e22;
+}
+.basket .remove{
+    width:100%;
+    margin: 5px 0px;
+    padding:5px;
+    background-color: #e67e22;
+    color:#fff;
+    border-color: #e67e22;
+}
+
+
+
+.checkout{
+    grid-area: checkout;
+    margin:30px 0px;
+    background-color: #fff;
+    padding:0px 10px;
+}
+.checkout h2{
+    text-align: center;
+}
+.checkout h4{
+    text-align: center;
+}
+
+.checkoutButton{
+    width:100%;
+    margin: 5px 0px;
+    padding:5px;
+    background-color: #e67e22;
+    color:#fff;
+    border-color: #e67e22;
+}
+
+@media screen and (max-width:768px){
+    .cart{
+        grid-template-columns: 40% 60%;
+        grid-template-areas: 
+        "image info"
+        "basket basket"
+    }
+    .basket{
+        margin-top:10px;
+        padding:10px;
+    }
+}
+
+@media screen and (max-width:600px){
+    
+    .cart-container{
+        
+        grid-template-columns: 100%;
+            grid-template-areas: 
+            "cart"
+            "checkout";
+        }
+        .cart{
+            flex-direction: column;
+        }
+        .product-info{
+            width:100%;
+        }
+        
+        .purchase{
+            width:100%;
+            /* flex-grow: 1; */
+        }
+        .product-image{
+            width:100%;
+        }
+        .product-image img{
+            width:100%;
+        }
+    .cart{
+        grid-template-columns: 100%;
+        grid-template-areas: 
+        "image"
+        "info"
+        "basket"
+    }
+}
+
+@media screen and (max-width:480px){
+    
+}

@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import {Link} from 'react-router-dom';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useStyles = makeStyles({
  
@@ -23,18 +24,29 @@ const useStyles = makeStyles({
 function Product(props) {
     const [product, setProduct] = useState({});
     const classes = useStyles();
+    const [loading, setLoading] = useState(true);
     const id = props.match.params.id;
     
     useEffect(() => {
         axios.get('https://fakestoreapi.com/products/' + id)
         .then((res) => {
             setProduct(res.data);
-        }) 
-    }, [id]);
+            setLoading(false); 
+        });
+        
+    }, []);
 
     console.log(product.image);
     return (
         <div className="product-container">
+
+            {loading ? 
+                <div style={{ alignItems: "center", display: "flex", justifyContent: "center", height: "80vh", width: "100vw" }}>
+                <CircularProgress />
+                   <span style={{ justifyContent: "center", position: "fixed", top: "45%" }}>Loading...please wait</span>
+                </div>
+             : <div>   
+
             <Breadcrumbs aria-label="breadcrumb" className="breadcrumbs">
                 <Link color="inherit" to="/" >
                     Home
@@ -59,6 +71,7 @@ function Product(props) {
                     </div>    
                 </div>
             </div>
+            </div> }
         </div>
     )
 }

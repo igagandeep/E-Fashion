@@ -11,14 +11,15 @@
     background-color: #fff;
 }
 .product-image{
-  
-  
-
+    width:400px;
+    /* grid-area: image; */
+    /* border:1px solid black; */
 }
 .product-description{
     
     padding:30px;
-   
+    /* grid-area: info; */
+    /* border:1px solid black; */
 }
 
 .quantity{
