@@ -5,6 +5,7 @@ import Header from './components/header/Header';
 import Home from './pages/home/Home';
 import Navbar from './components/navbar__bottom/Navbar';
 import Product from './pages/product/Product';
+import Cart from './pages/cart/Cart';
 
 
 
@@ -27,6 +28,7 @@ function App() {
                 <Home  sidebar={sidebar}/>
               </Route> 
               <Route path="/product/:id" component={Product} />
+               <Route path="/cart" component={Cart}/> 
             </Switch>
       </div>  
      </Router>
