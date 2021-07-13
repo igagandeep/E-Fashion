@@ -34,25 +34,14 @@ const useStyles = makeStyles((theme) => ({
 
 function Sidebar({sidebar}) {
     const classes = useStyles();
-    // const[sidebar, setSidebar] = useState(false);
     const [price, setPrice] = useState([20,37]);
-
-    
+ 
     const handlePrice = (e, newValue) => {
         setPrice(newValue);
     }
 
-  // const showSideBar = () => {
-  //   setSidebar(!sidebar);
-  // }
-
     return (
         <div id="sidebar-container">
-            {/* <div className="hamburger" >
-              <Link to="#"> 
-                <MenuIcon  fontSize="large" onClick={showSideBar}/>   
-              </Link> 
-            </div> */}
             <div className={sidebar ? 'sidebar active' : 'sidebar'}>
 
                 <div className="categories">

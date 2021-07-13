@@ -1,11 +1,9 @@
 .cart-container{
-    /* margin: 0 20px; */
     display:grid;
     grid-template-columns: 80% 20%;
     grid-template-areas: 
     "cart checkout";
     margin:0px 20px;
-    /* width:1200px;     */
 }
 .carts{
     grid-area: cart;
@@ -61,8 +59,6 @@
     color:#fff;
     border-color: #e67e22;
 }
-
-
 
 .checkout{
     grid-area: checkout;
@@ -132,8 +128,4 @@
         "info"
         "basket"
     }
-}
-
-@media screen and (max-width:480px){
-    
 }

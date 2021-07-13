@@ -1,5 +1,4 @@
 .product-container{
-
     background-color: #f6f6f6;
 }
 .breadcrumbs{
@@ -12,14 +11,10 @@
 }
 .product-image{
     width:400px;
-    /* grid-area: image; */
-    /* border:1px solid black; */
+
 }
-.product-description{
-    
+.product-description{   
     padding:30px;
-    /* grid-area: info; */
-    /* border:1px solid black; */
 }
 
 .quantity{
@@ -27,12 +22,8 @@
    margin-bottom: 10px;
 }
 
-@media only screen and (max-width:760px){
-   
+@media only screen and (max-width:760px){  
     .product{
-        /* grid-template-areas: 
-        "image",
-        "info"; */
         flex-direction: column;
     }
     
