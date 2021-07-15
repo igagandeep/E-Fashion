@@ -1,31 +1,22 @@
-import React, {useEffect, useState} from 'react'
-import axios from 'axios';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { addToBasket, removeFromBasket } from '../../redux';
+import Subtotal from './Subtotal';
 import './Cart.css';
-import CircularProgress from '@material-ui/core/CircularProgress';
+
+
 
 function Cart() {
-    const [products, setProducts] = useState([]);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        axios.get('https://fakestoreapi.com/products')
-        .then((res) => {
-            setProducts(res.data);
-            setLoading(false);
-        } )
-    }, []);
+    const products = useSelector(state => state.carts.product);
+    const dispatch = useDispatch();
     return (
         <>
-        {loading ? 
-            <div style={{ alignItems: "center", display: "flex", justifyContent: "center", height: "80vh", width: "100vw" }}>
-            <CircularProgress />
-               <span style={{ justifyContent: "center", position: "fixed", top: "45%" }}>Loading...please wait</span>
-            </div>
-         : 
+
            <div className="cart-container">
                     
                         <div className="carts">
-            <h1>Shopping Basket</h1>
+            {products.length ? <h1>Your Shopping Basket</h1> : <h1>Oops! Shopping Basket is empty</h1>
+           }
             <hr/>
                 {products.map(product => (
                     <div className="cart">
@@ -34,31 +25,27 @@ function Cart() {
                         </div>
                         <div className="product--info">
                             <h3>{product.title}</h3>
-                            <p>Price - {product.price}</p>
+                            <strong>${product.price}</strong>
                             <p>{product.description}</p>
                         </div>
                         <div className= "basket">
-                            <div class="product--quantity">
-                                <button>-</button>
-                                    <span> 1 </span>
-                                <button>+</button>
-                            </div>
-                            <button className="add-to-basket">Add to Basket</button>
-                            <button className="remove">Remove</button> 
+                            <button onClick={() => dispatch(addToBasket(product))}  className="add-to-basket">Add to Basket</button>
+                            <button onClick={() => dispatch(removeFromBasket(products.indexOf(product)))} className="remove" >Remove</button> 
                         </div>
                     </div>
                 ))}
             </div>
 
             <div className="checkout">
-                <h2>Proceed To Checkout</h2>
-                <h4>Subtotal(2) Items : $38.76</h4>
+                {/* <h2>Proceed To Checkout</h2>
+                <h4>Subtotal({products.length}) Items : {getBasketTotal()}</h4>
                 <button className="checkoutButton">Proceed to Checkout</button>
+     */}       
+     <Subtotal />     
             </div>
 
                       
         </div>
-        }  
         </>
     )
 }

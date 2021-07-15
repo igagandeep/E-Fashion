@@ -1,6 +1,7 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetch_product } from '../../redux';
+import axios from 'axios';
 import './Product.css';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
@@ -23,21 +24,25 @@ const useStyles = makeStyles({
  
 
 function Product(props) {
-    const product = useSelector(state => state.product);
-    const dispatch = useDispatch();
+    const [product, setProduct] = useState({});
     const classes = useStyles();
+    const [loading, setLoading] = useState(true);
     const id = props.match.params.id;
     
     useEffect(() => {
-        dispatch(fetch_product(id))
-    },[]);
+        axios.get('https://fakestoreapi.com/products/' + id)
+        .then((res) => {
+            setProduct(res.data);
+            setLoading(false); 
+        });
+        
+    }, []);
 
-    console.log(product);
-   
+    console.log(product.image);
     return (
-           <div className="product-container">
-    
-            {product.product.loading ? 
+        <div className="product-container">
+
+            {loading ? 
                 <div style={{ alignItems: "center", display: "flex", justifyContent: "center", height: "80vh", width: "100vw" }}>
                 <CircularProgress />
                    <span style={{ justifyContent: "center", position: "fixed", top: "45%" }}>Loading...please wait</span>
@@ -48,16 +53,16 @@ function Product(props) {
                 <Link color="inherit" to="/" >
                     Home
                 </Link>
-                <Typography color="textPrimary">{product.product.title}</Typography>
+                <Typography color="textPrimary">{product.title}</Typography>
             </Breadcrumbs>
             <div className="product">
                 <div className="product-image">
-                    <img src={product.product.image}  width="400px" height="400px"  alt={product.product.title}/>
+                    <img src={product.image}  width="400px" height="400px"  alt={product.title}/>
                 </div>
                 <div className="product-description">
-                    <h2>{product.product.title}</h2>
-                    <p>{product.product.description} </p>
-                    <p>${product.product.price}</p>
+                    <h2>{product.title}</h2>
+                    <p>{product.description} </p>
+                    <p>${product.price}</p>
                     <div className="quantity">
                         <span>Quantity </span> 
                         <button>-</button> <span> 1 </span><button>+</button>
