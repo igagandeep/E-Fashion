@@ -1,0 +1,13 @@
+.login-container{
+    display:flex;
+    justify-content: center;
+    margin-top: 100px;
+    
+}
+.login-form{
+    background-color:#fff;
+    padding:10px 30px 50px 30px;
+}
+.login-form h1{
+    text-align: center;
+}
