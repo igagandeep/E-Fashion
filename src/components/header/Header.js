@@ -28,7 +28,7 @@ function Header() {
                     </Badge>
                 </NavLink>                            
                     {/* Signin */}
-                <NavLink to="/signin" className="nav-right-items">
+                <NavLink to="/login" className="nav-right-items">
                 <button className="signButton"> Sign-in</button>
                 </NavLink>
                 {/* <NavLink to="/signout">

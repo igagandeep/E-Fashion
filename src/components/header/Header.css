@@ -49,6 +49,7 @@ header{
     color:#fff;
 }
 .signButton{
+    cursor: pointer;
     border-radius: 5px;
     padding:5px;
     background-color: #fff;
