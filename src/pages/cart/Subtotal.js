@@ -5,7 +5,7 @@ import CurrencyFormat from "react-currency-format";
 
 function Subtotal() {
     const basket = useSelector(state => state.carts.product);
-    console.log(basket);
+    const uid = useSelector(state => state.auth.uid);
     return (
         <div>
             <h2>Proceed To Checkout</h2>
@@ -22,7 +22,11 @@ function Subtotal() {
                  thousandSeparator = {true}
                  prefix={"$"}   
                 />
-                <button className="checkoutButton">Proceed to Checkout</button>
+                {uid ? 
+                    <button className="checkoutButton" >Proceed to Checkout</button>
+                        : 
+                        <button className="checkoutButtonDisabled" disabled>Signin to Checkout</button> }    
+                
         </div>
     )
 }

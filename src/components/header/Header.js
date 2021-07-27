@@ -1,13 +1,45 @@
 import React from 'react';
-import { useSelector} from 'react-redux';
+
+import { useSelector, useDispatch} from 'react-redux';
+import { signOut} from '../../redux/index';
+
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import {NavLink} from 'react-router-dom';
 import Badge from '@material-ui/core/Badge';
 import './Header.css';
 
 function Header() {
     const carts  = useSelector(state => state.carts);
+    const userId = useSelector(state => state.auth.uid);
+    const dispatch = useDispatch();
+    // const history = useHistory();
+
+   
+    // auth.onAuthStateChanged((user) => {
+    //     // console.log(user);
+    //     if(user){
+    //         setUserId(user.uid)
+    //     }
+    //     else{
+    //         setUserId('')
+    //     }
+    //         //     dispatch(isLogged(user));
+    //     // }
+    //     // else{
+    //     //     dispatch(isLogged(''));
+    //     // }            
+    // })
+
+    // console.log(authUser)
+    // auth.onAuthStateChanged((user) => {
+    //     console.log(user)
+    //     if(user){
+    //         // setAuthUser(user);
+    //     }
+    //     else{
+    //         // setAuthUser({})
+    //     }
+    // })
     
     return (
         <header>
@@ -28,15 +60,18 @@ function Header() {
                     </Badge>
                 </NavLink>                            
                     {/* Signin */}
+            {userId ?     
+                <NavLink to="/login">
+                    <button onClick={() => dispatch(signOut())} className="signButton"> Sign-out</button>
+                </NavLink> 
+                : 
                 <NavLink to="/login" className="nav-right-items">
-                <button className="signButton"> Sign-in</button>
+                    <button className="signButton"> Sign-in</button>
                 </NavLink>
-                {/* <NavLink to="/signout">
-                    Sign-out
-                </NavLink>     */}
+                 }
             </nav>
         </header>
     )
 }
 
-export default Header
+export default Header;
