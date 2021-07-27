@@ -30,7 +30,7 @@ function Product(props) {
     
     useEffect(() => {
         dispatch(fetch_product(id))
-    },[]);
+    });
 
     console.log(product);
    

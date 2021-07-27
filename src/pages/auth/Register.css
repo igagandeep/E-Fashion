@@ -11,3 +11,6 @@
 .register-form h1{
     text-align: center;
 }
+.danger-text{
+    color:red;
+}

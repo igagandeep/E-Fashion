@@ -13,13 +13,12 @@ function Cart() {
         <>
 
            <div className="cart-container">
-                    
-                        <div className="carts">
-            {products.length ? <h1>Your Shopping Basket</h1> : <h1>Oops! Shopping Basket is empty</h1>
-           }
-            <hr/>
+                <div className="carts">
+                    {products.length ? <h1>Your Shopping Basket</h1> : <h1>Oops! Shopping Basket is empty</h1>
+                    }
+                <hr/>
                 {products.map(product => (
-                    <div className="cart">
+                    <div className="cart" key={product.id} >
                         <div className="product--image">
                             <img src={product.image} alt={product.title} />     
                         </div>
@@ -36,12 +35,8 @@ function Cart() {
                 ))}
             </div>
 
-            <div className="checkout">
-                {/* <h2>Proceed To Checkout</h2>
-                <h4>Subtotal({products.length}) Items : {getBasketTotal()}</h4>
-                <button className="checkoutButton">Proceed to Checkout</button>
-     */}       
-     <Subtotal />     
+            <div className="checkout">   
+                <Subtotal />     
             </div>
 
                       

@@ -65,7 +65,7 @@ function Products() {
     const dispatch = useDispatch();
         useEffect(() => {
             dispatch(fetch_products());
-    }, []);
+    });
 
     
     return (
