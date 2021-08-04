@@ -35,7 +35,7 @@ const useStyles = makeStyles({
 function Register() {
     const classes = useStyles();
     const [user, setUser] = useState({firstName: '', lastName: '', email : '', password : ''});
-    const authError = useSelector(state => state.auth.authError);
+    const authError = useSelector(state => state.auth.registerError);
 
     const uid = useSelector(state => state.auth.uid);
     const dispatch = useDispatch();
@@ -54,7 +54,7 @@ function Register() {
     }
 
     useEffect(() => {
-        if(uid !== ''){
+        if(uid){
           history.push('/');
         }
     })
