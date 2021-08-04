@@ -10,26 +10,28 @@ import Cart from './pages/cart/Cart';
 import Login from './pages/auth/Login';
 import {isLogged} from './redux/index';
 import Register from './pages/auth/Register';
-import {auth,db} from './config/FbConfig';
+import {auth} from './config/FbConfig';
+import Success from './pages/orders/Success';
+import Orders from './pages/orders/Orders';
 
 
 function App() {
-  const [sidebar, setSidebar] = useState(false);
-  
+  const [sidebar, setSidebar] = useState(false);  
   const dispatch = useDispatch();
   const showSidebar = () => {
     setSidebar(!sidebar);
   }
 
-  console.log(db);
+
 
   useEffect(() => {
       auth.onAuthStateChanged((user) => {
       if(user){
-        dispatch(isLogged(user.uid));
+        dispatch(isLogged(user.uid, user.email));
       }
+         
       else{
-        dispatch(isLogged(''))
+        dispatch(isLogged())
       }
   })
   
@@ -46,7 +48,9 @@ function App() {
                 <Home  sidebar={sidebar}/>
               </Route> 
               <Route path="/product/:id" component={Product} />
+              <Route path="/success" component={Success} />
               <Route path="/cart" component={Cart}/> 
+              <Route path="/orders" component={Orders} />
               <Route path="/login" component={Login} />
               <Route path="/register" component={Register} /> 
             </Switch>

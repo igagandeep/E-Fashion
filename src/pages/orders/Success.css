@@ -1,0 +1,20 @@
+.success-container{
+    background-color: #fff ;
+    margin: 0px auto;
+    width:900px;
+    padding:20px;
+}
+.success-container button{
+    width:100%;
+    background-color:#e67e22 ;
+    color:#fff;
+    border-color: #e67e22;
+    padding:3px;
+}
+
+@media screen and (max-width:600px){
+    .success-container{
+        width:100%;
+        
+    }
+}

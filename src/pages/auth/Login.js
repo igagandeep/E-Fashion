@@ -4,10 +4,10 @@ import {useSelector, useDispatch} from 'react-redux';
 import {NavLink} from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 // import Button from '@material-ui/core/Button';
-import {signIn} from '../../redux/auth/authActions';
+import {signIn, reset} from '../../redux/auth/authActions';
 import TextField from '@material-ui/core/TextField';
 import {useHistory} from 'react-router-dom';
-
+import {auth} from '../../config/FbConfig';
 
 const useStyles = makeStyles({
     root: {
@@ -39,25 +39,30 @@ function Login() {
     const history = useHistory();
     const classes = useStyles();
     const uid = useSelector(state => state.auth.uid);
-    const auth_error = useSelector(state => state.auth.authError);
+    const auth_error = useSelector(state => state.auth.loginError);
     const dispatch = useDispatch();
 
 
     const handleSubmit = (e) => {
       e.preventDefault();
       dispatch(signIn(email,password));
-      // if(authError != null){
-        // console.log(authError);
-        history.push('/');
-      // }
+    }
+    // console.log(uid);
+  
+    if(uid){
+      history.push('/');
+
     }
 
-    useEffect(() => {
-      if(uid !== ''){
-        history.push('/');
-      }
-    })
 
+
+  //   auth.onAuthStateChanged((user) => {
+  //     // console.log(user);
+  //     if(user){
+  //         history.push('/');
+  //     }
+  // });
+    
 
 
     
@@ -69,9 +74,9 @@ function Login() {
             <TextField id="email" type="email" value={email} className={classes.input}  onChange={e => setEmail(e.target.value)} label="Email" /><br/>
             <TextField id="password" type="password" value={password} className={classes.input} onChange={e => setPassword(e.target.value)} label="password" />
             <br/><br/>
-            <button type="submit" className={classes.button} size="small" >Sign-In</button>
+            <button type="submit"  className={classes.button} size="small" >Sign-In</button>
             <br/>
-            <NavLink to="/register"><h4>Create an account</h4></NavLink>
+            <NavLink to="/register" onClick={() => dispatch(reset())}><h4>Create an account</h4></NavLink>
             
         </form>
         { auth_error ? <p className="text-danger">{auth_error}</p> : null}
