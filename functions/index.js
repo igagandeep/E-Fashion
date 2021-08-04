@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 /* eslint-disable require-jsdoc */
 
 /* eslint-disable quotes */
@@ -124,6 +125,7 @@ processTheOrderApp.post('/', bodyParser.raw({type: 'application/json'}), (reques
       timestamp: admin.firestore.FieldValue.serverTimestamp(),
     }).then(() => {
       console.log(`SUCCESS: Order ${session.id} has been placed`);
+    // eslint-disable-next-line linebreak-style
     }).catch((e) => {
       console.log(e.message);
     });

@@ -24,7 +24,7 @@ function Orders() {
     },[email]);
         
     const fetchOrders = () => {
-        db.collection("users").doc(email).collection("orders").get()
+        db.collection("users").doc(email).collection("orders").orderBy('timestamp','desc').get()
         .then(snapshot => {
             const stripeOrders = snapshot.docs.map(order => ({
                 id:  order.id.substring(1,20),

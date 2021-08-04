@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addToBasket, removeFromBasket } from '../../redux';
+import { addToBasket, removeFromBasket } from '../../redux/index';
 import Subtotal from './Subtotal';
 import './Cart.css';
 
