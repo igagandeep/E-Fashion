@@ -3,11 +3,10 @@ import './Login.css';
 import {useSelector, useDispatch} from 'react-redux';
 import {NavLink} from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-// import Button from '@material-ui/core/Button';
 import {signIn, reset} from '../../redux/auth/authActions';
 import TextField from '@material-ui/core/TextField';
 import {useHistory} from 'react-router-dom';
-import {auth} from '../../config/FbConfig';
+
 
 const useStyles = makeStyles({
     root: {
@@ -42,29 +41,16 @@ function Login() {
     const auth_error = useSelector(state => state.auth.loginError);
     const dispatch = useDispatch();
 
-
     const handleSubmit = (e) => {
       e.preventDefault();
       dispatch(signIn(email,password));
     }
-    // console.log(uid);
-  
-    if(uid){
-      history.push('/');
-
-    }
-
-
-
-  //   auth.onAuthStateChanged((user) => {
-  //     // console.log(user);
-  //     if(user){
-  //         history.push('/');
-  //     }
-  // });
     
-
-
+    useEffect(() => {
+      if(uid){
+        history.push('/');
+      }
+    })
     
     return (
     <div className="login-container">

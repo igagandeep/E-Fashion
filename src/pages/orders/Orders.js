@@ -4,7 +4,6 @@ import {useSelector} from 'react-redux';
 import "./Orders.css";
 import {db} from '../../config/FbConfig';
 import moment from 'moment';
-import {auth} from '../../config/FbConfig';
 
 function Orders() {
     const history = useHistory();
@@ -12,16 +11,13 @@ function Orders() {
     const [orders, setOrders] = useState([]);
            
         useEffect(() => {
-            console.log(email);
-            // auth.onAuthStateChanged((user) => {
                 if(email){
                     fetchOrders();
                 }
                 if(email === undefined){
                     history.push('/');
                 }    
-        // })
-    },[email]);
+        });
         
     const fetchOrders = () => {
         db.collection("users").doc(email).collection("orders").orderBy('timestamp','desc').get()
@@ -36,20 +32,15 @@ function Orders() {
 
             setOrders(stripeOrders);
         })        
-       
-        
     }    
-
-        // console.log(orders);
     return (
         <div className="orders-container">
                 <div className="orders">
-    
                 <h1>Your Orders</h1>
                 <hr/>
                     { 
                         orders && orders.map((order) => (
-                        <div className="order">
+                        <div className="order" >
                         <div className="order_info">
                         <div className="order_date">
                             <h3>ORDER PLACED</h3>
@@ -64,16 +55,16 @@ function Orders() {
                             <p>{order.images.length} items</p>
                         </div>
                     </div>
-                    <div className="order_images">
+                    <div className="order_images" >
                         {order.images.map((image) => (
-                            <img src={image} alt="jjsjs" width="100" height="100" />
+                            <img src={image}  alt="jjsjs" width="100" height="100" />
                         ))}
                     </div>  
                         </div>
                     ))
                     }             
- </div>
-                            </div>
+            </div>
+        </div>
     )
 }
 

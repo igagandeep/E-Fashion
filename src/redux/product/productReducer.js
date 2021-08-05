@@ -12,7 +12,9 @@ const productReducer = (state = initialState, action) => {
         case FETCH_PRODUCT_REQUEST : 
         return {
             ...state,
-            loading: true 
+            loading: true,
+            product: {},
+            error: '', 
         }
 
         case FETCH_PRODUCT_SUCCESS : 

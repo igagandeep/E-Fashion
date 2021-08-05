@@ -19,8 +19,7 @@ const useStyles = makeStyles((theme) => ({
       width: 300,
       padding: '10px 20px 10px 20px',
       margin : "20px 0px"
-    },
-    
+    },  
     media: {
         padding:'0px',
         height: 250,
@@ -37,12 +36,10 @@ const useStyles = makeStyles((theme) => ({
     actions : {
         display:'flex',
         flexDirection:'column',
-      
     },
     price : {
         fontWeight: 'bold'
     },
-
     shoppingCart : {
         backgroundColor: '#000',
         color:'#fff',
@@ -50,28 +47,28 @@ const useStyles = makeStyles((theme) => ({
         padding:'5px',
         marginTop:'10px',
         '&:hover': {
-            backgroundColor: "#e67e22",
+            backgroundColor: "#f39c12",
          },
     }
   }));
 
-
-
-
 function Products() {
     const classes = useStyles();
-    const products = useSelector(state => state.products);
-    
+    const products = useSelector(state => state.products.products);
+    const loading = useSelector(state => state.products.loading)  
     const dispatch = useDispatch();
-        useEffect(() => {
-            dispatch(fetch_products());
-    });
 
-    
+    useEffect(() => {
+        // This function will fire an action which leads to retrieve data from api
+        dispatch(fetch_products());
+
+     
+    }, [dispatch]);
+
+
     return (
-        <div className="products-container">
-             
-             {products.loading ? 
+        <div className="products-container">         
+             {loading ? 
                 <div style={{ alignItems: "center", display: "flex", justifyContent: "center", height: "80vh", width: "100vw" }}>
                 <CircularProgress />
                    <span style={{ justifyContent: "center", position: "fixed", top: "45%" }}>Loading...please wait</span>
@@ -81,7 +78,7 @@ function Products() {
             : <div>
             <h1>New Arrivals</h1>
             <div className="products">
-            {products  && products.products.map((product, key) => (
+            {products  && products.map((product, key) => (
                 <Card className={classes.root} key={product.id}>
                <Link   className="product" to={'/product/' + product.id}>
                     <CardActionArea>
@@ -95,7 +92,6 @@ function Products() {
                             {product.title}
                         </Typography>
                         </CardContent>
-
                     </CardActionArea>
                 </Link>
                 <CardActions className={classes.actions}>

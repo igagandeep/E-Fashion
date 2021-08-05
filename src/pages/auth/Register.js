@@ -6,9 +6,8 @@ import TextField from '@material-ui/core/TextField';
 import {useSelector,useDispatch} from 'react-redux';
 import {signup} from '../../redux/index';
 import {useHistory} from 'react-router-dom';
+
 const useStyles = makeStyles({
- 
- 
     root: {
     width: 400,
     padding:'0px',
@@ -69,7 +68,6 @@ function Register() {
             <TextField className={classes.input}  id="lastName"  onChange={handleChange} label="Last Name" /><br/>
             <TextField  type="email" className={classes.input}  id="email"  onChange={handleChange} label="Email" /><br/>
             <TextField type="password" className={classes.input} id="password" label="password"  onChange={handleChange} />
-            {/* <TextField className={classes.input} label="Confirm Password"  onChange={(e) => setConfirmPassword(e.target.value)}  /> */}
             <br/><br/>
             <Button type="submit" className={classes.button} size="small">Register</Button>
             <br/>

@@ -4,14 +4,12 @@ import axios from 'axios';
 export const fetch_product_request = () => {
     return {
         type: FETCH_PRODUCT_REQUEST,
-        loading: true
     }
 } 
 
 export const fetch_product_success = (product) => {
     return {
         type : FETCH_PRODUCT_SUCCESS,
-        loading :false,
         payload : product, 
     }
 }
@@ -19,7 +17,6 @@ export const fetch_product_success = (product) => {
 export const fetch_product_failure = (error) => {
     return {
         type: FETCH_PRODUCT_FAILURE,
-        loading : false,
         payload : error
     }
 }
@@ -27,7 +24,7 @@ export const fetch_product_failure = (error) => {
 
 export const fetch_product = (id) => {
     return (dispatch) => {
-        dispatch(fetch_product_request)
+        dispatch(fetch_product_request())
         axios.get('https://fakestoreapi.com/products/' + id)
         .then(res => {
             const product = res.data;

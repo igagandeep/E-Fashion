@@ -2,8 +2,11 @@
     display: flex;
     align-items: center;
     color:#fff;
-    background-color: #e67e22;
+    height:20px;
+    background-color: #f39c12;
 }
 .hamburger{
     color:#fff;
+    margin-top: 4px;
+    align-self: center;
 }
