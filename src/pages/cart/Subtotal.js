@@ -3,12 +3,14 @@ import {useSelector} from 'react-redux';
 import {getBasketTotal} from '../../redux/cart/cartReducer';
 import CurrencyFormat from "react-currency-format";
 import Checkout from './Checkout';
+import { NavLink } from 'react-router-dom';
 
 function Subtotal() {
     const basket = useSelector(state => state.carts.product);
     const uid = useSelector(state => state.auth.uid);
     
     return (
+       
         <div>
             <h2>Proceed To Checkout</h2>
             <CurrencyFormat 
@@ -24,11 +26,16 @@ function Subtotal() {
                  thousandSeparator = {true}
                  prefix={"$"}   
                 />
-                {uid &&  basket.length !== 0 ? 
-                    <Checkout />            : 
-                        <button className="checkoutButtonDisabled" disabled>Signin to Checkout</button> }    
-                
+                {uid ?
+                    <Checkout /> : 
+                    <NavLink to="/login">
+                        <button className="checkoutButtonDisabled" >Signin to Checkout</button>
+                    </NavLink>
+                }
+                          
         </div>
+        
+       
     )
                 }
 

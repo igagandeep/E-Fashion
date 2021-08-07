@@ -1,7 +1,9 @@
 .login-container{
     display:flex;
+    /* width: 600px; */
+    /* align-self: center; */
     justify-content: center;
-    margin-top: 100px;
+    margin: 100px auto;
     
 }
 .login-form{
@@ -13,4 +15,19 @@
 }
 .text-danger{
     color:red;
+}
+.loginInput{
+    width:400px;
+}
+.loginButton{
+    width:100%;
+    background-color: #000;
+    color:#fff;
+}
+
+
+@media screen and (max-width:760px){
+    .loginInput{
+        width:100%;
+    }
 }

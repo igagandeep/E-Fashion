@@ -17,6 +17,8 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 const useStyles = makeStyles((theme) => ({
     root: {
       width: 300,
+      boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2)",   
+
       padding: '10px 20px 10px 20px',
       margin : "20px 0px"
     },  
@@ -47,6 +49,9 @@ const useStyles = makeStyles((theme) => ({
         padding:'5px',
         marginTop:'10px',
         '&:hover': {
+            boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",   
+
+            
             backgroundColor: "#f39c12",
          },
     }
@@ -96,7 +101,7 @@ function Products() {
                 </Link>
                 <CardActions className={classes.actions}>
                    <Typography className={classes.price}>
-                       Price -${product.price}
+                       Price: ${product.price}
                     </Typography>    
                     <Button size="small"   onClick={() => dispatch(addToBasket(product))}  className={classes.shoppingCart}>
                         Add to Basket

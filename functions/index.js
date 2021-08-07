@@ -71,8 +71,8 @@ function createOrderAndSession(req, res) {
     line_items: items,
     customer_email: email,
     // clientId: uid,
-    success_url: 'http://localhost:3000/success/',
-    cancel_url: 'https://localhost:3000/cancel/',
+    success_url: 'https://eshop-c257f.web.app/success/',
+    cancel_url: 'https://eshop-c257f.web.app/cancel/',
     metadata: {
       email,
       images: JSON.stringify(products.map((product) => product.image)),

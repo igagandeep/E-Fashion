@@ -2,7 +2,6 @@ import { ADD_TO_BASKET, REMOVE_FROM_BASKET } from "./cartType"
 
 const initialState = {
     product : [],
-    items : []
 }
 
 export const getBasketTotal = (basket) => {
@@ -19,10 +18,13 @@ const cartReducer = (state = initialState, action) => {
                 product : [...state.product, action.payload]
             }
             case REMOVE_FROM_BASKET:
-             const index = action.payload;
+             const index = state.product.findIndex(
+                 (basketItem) => basketItem.id === action.payload
+             );
+             console.log(index);
              let newBasket = [...state.product]
              if(index >= 0){
-                 newBasket.splice(index,1);
+                 newBasket.splice(index, 1);
              }else{
                  console.warn(`cant remove product (id : ${action.payload}) as its not in basket`)
              }          

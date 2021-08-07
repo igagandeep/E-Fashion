@@ -1,38 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import './Register.css';
-import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import {useSelector,useDispatch} from 'react-redux';
 import {signup} from '../../redux/index';
 import {useHistory} from 'react-router-dom';
 
-const useStyles = makeStyles({
-    root: {
-    width: 400,
-    padding:'0px',
-  },
-  form:{
-    width:400,
-  },
-  input:{
-    width:400,
-    marginRight:'20px'
-  },
-  button:{
-      width:'100%',
-      backgroundColor:'#000',
-      color:'#fff',
-      '&:hover': {
-        backgroundColor: "#000",
-     },
-  }
-
-});
 
 
 function Register() {
-    const classes = useStyles();
     const [user, setUser] = useState({firstName: '', lastName: '', email : '', password : ''});
     const authError = useSelector(state => state.auth.registerError);
 
@@ -62,14 +37,14 @@ function Register() {
     <div className="register-container">
        <div className="register-form">
         <h1>Sign-up</h1>
-        <form className={classes.form} noValidate onSubmit={handleSubmit} autoComplete="off">
+        <form className="registerForm" noValidate onSubmit={handleSubmit} autoComplete="off">
         
-            <TextField type="text" className={classes.input} id="firstName" onChange={handleChange} label="First Name" required/><br/>    
-            <TextField className={classes.input}  id="lastName"  onChange={handleChange} label="Last Name" /><br/>
-            <TextField  type="email" className={classes.input}  id="email"  onChange={handleChange} label="Email" /><br/>
-            <TextField type="password" className={classes.input} id="password" label="password"  onChange={handleChange} />
+            <TextField type="text" className="registerInput" id="firstName" onChange={handleChange} label="First Name" required/><br/>    
+            <TextField type="text" className="registerInput"  id="lastName"  onChange={handleChange} label="Last Name" required/><br/>
+            <TextField  type="email" className="registerInput"  id="email"  onChange={handleChange} label="Email" /><br/>
+            <TextField type="password" className="registerInput" id="password" label="password"  onChange={handleChange} />
             <br/><br/>
-            <Button type="submit" className={classes.button} size="small">Register</Button>
+            <button type="submit" className="registerButton" size="small">Register</button>
             <br/>
         </form>
             {authError ? <p className="danger-text">{authError}</p> : <p></p>}

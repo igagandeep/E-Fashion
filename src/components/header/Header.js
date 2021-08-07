@@ -2,9 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch} from 'react-redux';
 import { signOut} from '../../redux/index';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSignInAlt } from '@fortawesome/free-solid-svg-icons'
-import {NavLink, useHistory} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import Badge from '@material-ui/core/Badge';
 import './Header.css';
 
@@ -12,12 +10,6 @@ function Header() {
     const carts  = useSelector(state => state.carts);
     const uid = useSelector(state => state.auth.uid);
     const dispatch = useDispatch();
-    const history = useHistory();
-
-    // this condition check if user exists or not
-   if(uid === undefined){
-       history.push('/');
-   } 
 
    return (
         <header>

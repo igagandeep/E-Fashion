@@ -8,9 +8,9 @@ export const addToBasket = (product) => {
     }
 }
 
-export const removeFromBasket = (index) => {
+export const removeFromBasket = (id) => {
     return{
         type : REMOVE_FROM_BASKET,
-        payload : index
+        payload : id
     }
 }

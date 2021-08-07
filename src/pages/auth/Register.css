@@ -14,3 +14,17 @@
 .danger-text{
     color:red;
 }
+.registerButton{
+    width:100%;
+    background-color: #000;
+    color:#fff;
+}
+
+.registerInput{
+    width:400px;
+}
+@media screen and (max-width:760px){
+    .registerInput{
+        width:100%;
+    }
+}
